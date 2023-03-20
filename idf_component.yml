@@ -1,2 +1,5 @@
 description: lvglpp - a C++ wrapper for LVGL
 url: https://github.com/vpaeder/lvglpp
+
+dependencies:
+  lvgl/lvgl: 8.3.0
