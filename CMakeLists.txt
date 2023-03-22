@@ -56,4 +56,5 @@ idf_component_register(
     
     REQUIRES main
 )
-idf_build_set_property(COMPILE_OPTIONS "-Wno-unused-function -Wno-deprecated-enum-enum-conversion" APPEND)
+idf_build_set_property(COMPILE_OPTIONS "-Wno-unused-function" APPEND)
+idf_build_set_property(COMPILE_OPTIONS "-Wno-deprecated-enum-enum-conversion" APPEND)
