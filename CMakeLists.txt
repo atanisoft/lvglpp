@@ -57,4 +57,5 @@ idf_component_register(
     REQUIRES main
 )
 target_compile_options(${COMPONENT_LIB} PRIVATE -Wno-unused-function)
+target_compile_options(${COMPONENT_LIB} INTERFACE -Wno-unused-function)
 target_compile_options(${COMPONENT_LIB} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>)
