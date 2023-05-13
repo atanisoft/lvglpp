@@ -23,6 +23,12 @@ namespace lvgl::font {
          */
         Font(std::string & font_name);
 
+        /** \fn Font(const lv_font_t & font)
+         *  \brief Constructor with compiled in font descriptor.
+         *  \param font: font descriptor.
+         */
+        Font(const lv_font_t & font);
+
         /** \fn const uint8_t* get_glyph_bitmap(uint32_t letter) const
          *  \brief Gets glyph bitmap.
          *  \param letter: glyph index.

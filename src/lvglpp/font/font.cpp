@@ -12,6 +12,22 @@ namespace lvgl::font {
         this->lv_obj = LvPointerType(lv_font_load(font_name.c_str()));
     }
 
+    Font::Font(const lv_font_t & font) {
+        this->lv_obj = LvPointerType(lv_cls_alloc<lv_font_t>());
+        this->raw_ptr()->get_glyph_dsc = font.get_glyph_dsc;
+        this->raw_ptr()->get_glyph_bitmap = font.get_glyph_bitmap;
+        this->raw_ptr()->line_height = font.line_height;
+        this->raw_ptr()->base_line = font.base_line;
+        this->raw_ptr()->subpx = font.subpx;
+        this->raw_ptr()->underline_position = font.underline_position;
+        this->raw_ptr()->underline_thickness = font.underline_thickness;
+        this->raw_ptr()->dsc = font.dsc;
+        this->raw_ptr()->fallback = font.fallback;
+#if LV_USE_USER_DATA
+        this->raw_ptr()->user_data = font.user_data;
+#endif
+    }
+
     const uint8_t* Font::get_glyph_bitmap(uint32_t letter) const {
         return lv_font_get_glyph_bitmap(this->raw_ptr(), letter);
     }
