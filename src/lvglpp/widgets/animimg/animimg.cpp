@@ -10,13 +10,11 @@
 namespace lvgl::widgets {
 
     void AnimatedImage::set_src(const std::vector<ImageDescriptor> & imgs) {
-        this->dsc = std::make_unique<lv_img_dsc_t*[]>(imgs.size());
+        this->dsc = std::make_unique<const lv_img_dsc_t*[]>(imgs.size());
         for (size_t n=0; n<imgs.size(); n++) {
-            // note that dsc doesn't store const lv_img_dsc_t* because lv_animimg_set_src
-            // requires non-const
-            this->dsc[n] = const_cast<lv_img_dsc_t*>(imgs[n].raw_ptr());
+            this->dsc[n] = imgs[n].raw_ptr();
         }
-        lv_animimg_set_src(this->raw_ptr(), this->dsc.get(), imgs.size());
+        lv_animimg_set_src(this->raw_ptr(), reinterpret_cast<const void **>(this->dsc.get()), imgs.size());
     }
 
     void AnimatedImage::start() {

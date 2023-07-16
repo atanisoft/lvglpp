@@ -26,7 +26,7 @@ namespace lvgl::widgets {
         /** \property std::unique_ptr<lv_img_dsc_t*[]> dsc
          *  \brief A list of pointers to the animation images.
          */
-        std::unique_ptr<lv_img_dsc_t*[]> dsc;
+        std::unique_ptr<const lv_img_dsc_t*[]> dsc;
     
     public:
         using Widget::Widget;
