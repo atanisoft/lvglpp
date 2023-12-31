@@ -94,5 +94,9 @@ namespace lvgl::core {
         lv_group_swap_obj(obj1.raw_ptr(), obj2.raw_ptr());
     }
 
+    void remove_obj_from_group(const Object & obj) {
+        lv_group_remove_obj(const_cast<lv_obj_t*>(obj.raw_ptr()));
+    }
+
 
 }

@@ -141,4 +141,10 @@ namespace lvgl::core {
      *  \param obj2: second object.
      */
     void swap_objs_in_group(Object & obj1, Object & obj2);
+
+    /** \fn void remove_obj_from_group(const Object & obj);
+     *  \brief Removes given object from it's group.
+     *  \param obj: object to remove.
+     */
+    void remove_obj_from_group(const Object & obj);
 }
