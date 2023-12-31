@@ -34,5 +34,9 @@ namespace lvgl::widgets {
                                                 const_cast<lv_obj_t*>(btn.raw_ptr())));
     }
 
+    void List::clear() {
+        lv_obj_clean(this->raw_ptr());
+    }
+
 }
 #endif // LV_USE_LIST

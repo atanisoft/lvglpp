@@ -59,6 +59,11 @@ namespace lvgl::widgets {
          *  \returns text string.
          */
         std::string get_btn_text(const Button & btn) const;
+
+        /** \fn void clear()
+         *  \brief Removes all elements in the list.
+         */
+        void clear();
     };
 
 }
