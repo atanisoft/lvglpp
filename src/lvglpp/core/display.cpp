@@ -16,10 +16,16 @@
 
 namespace lvgl::core {
 
-    Display::Display(lv_coord_t hor_res, lv_coord_t ver_res, uint32_t fb_size) {
+    Display::Display(lv_coord_t hor_res, lv_coord_t ver_res, size_t fb_size, bool double_buf) {
         this->lv_buf_1 = std::vector<lv_color_t>(fb_size);
+        auto primary_buf = this->lv_buf_1.data();
+        void *secondary_buf = nullptr;
+        if (double_buf) {
+            this->lv_buf_2 = std::vector<lv_color_t>(fb_size);
+            secondary_buf = this->lv_buf_2.data();
+        }
 
-        lv_disp_draw_buf_init(&(this->lv_disp_buf), this->lv_buf_1.data(), nullptr, fb_size);
+        lv_disp_draw_buf_init(&(this->lv_disp_buf), primary_buf, secondary_buf, fb_size);
         lv_disp_drv_init(&(this->lv_disp_drv));
         this->lv_disp_drv.draw_buf = &(this->lv_disp_buf);
         this->lv_disp_drv.hor_res = hor_res;

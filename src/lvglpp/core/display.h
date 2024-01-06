@@ -8,6 +8,7 @@
 #pragma once
 #include "../lv_wrapper.h"
 #include <vector>
+#include <esp_heap_caps.h>
 
 // we need user_data to store pointer to C++ object, otherwise we cannot
 // access callbacks defined as class members.
@@ -43,6 +44,11 @@ namespace lvgl::core {
          *  \brief Display buffer.
          */
         std::vector<lv_color_t> lv_buf_1;
+
+        /** \property std::vector<lv_color_t> lv_buf_2
+         *  \brief Display buffer, used only when double buffering is enabled.
+         */
+        std::vector<lv_color_t> lv_buf_2;
 
         /** \property uint32_t fb_size
          *  \brief Framebuffer size.
@@ -83,8 +89,9 @@ namespace lvgl::core {
          *  \param hor_res: horizontal resolution.
          *  \param ver_res: vertical resolution.
          *  \param fb_size: frame buffer size.
+         *  \param double_buf: When true double buffering will be used.
          */
-        Display(lv_coord_t hor_res, lv_coord_t ver_res, uint32_t fb_size);
+        Display(lv_coord_t hor_res, lv_coord_t ver_res, size_t fb_size, bool double_buf = false);
 
         /** \fn void set_default()
          *  \brief Sets display as default.
