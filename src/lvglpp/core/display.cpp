@@ -17,11 +17,11 @@
 namespace lvgl::core {
 
     Display::Display(lv_coord_t hor_res, lv_coord_t ver_res, size_t fb_size, bool double_buf) {
-        this->lv_buf_1 = std::vector<lv_color_t>(fb_size);
+        this->lv_buf_1 = std::vector<lv_color_t, PSRAMAllocator<lv_color_t>>(fb_size);
         auto primary_buf = this->lv_buf_1.data();
         void *secondary_buf = nullptr;
         if (double_buf) {
-            this->lv_buf_2 = std::vector<lv_color_t>(fb_size);
+            this->lv_buf_2 = std::vector<lv_color_t, PSRAMAllocator<lv_color_t>>(fb_size);
             secondary_buf = this->lv_buf_2.data();
         }
 

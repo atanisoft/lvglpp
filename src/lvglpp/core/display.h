@@ -7,6 +7,7 @@
  */
 #pragma once
 #include "../lv_wrapper.h"
+#include "../psram_allocator.h"
 #include <vector>
 #include <esp_heap_caps.h>
 
@@ -43,12 +44,12 @@ namespace lvgl::core {
         /** \property std::vector<lv_color_t> lv_buf_1
          *  \brief Display buffer.
          */
-        std::vector<lv_color_t> lv_buf_1;
+        std::vector<lv_color_t, PSRAMAllocator<lv_color_t>> lv_buf_1;
 
         /** \property std::vector<lv_color_t> lv_buf_2
          *  \brief Display buffer, used only when double buffering is enabled.
          */
-        std::vector<lv_color_t> lv_buf_2;
+        std::vector<lv_color_t, PSRAMAllocator<lv_color_t>> lv_buf_2;
 
         /** \property uint32_t fb_size
          *  \brief Framebuffer size.
