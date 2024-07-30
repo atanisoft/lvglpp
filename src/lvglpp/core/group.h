@@ -18,6 +18,11 @@ namespace lvgl::core {
     public:
         using PointerWrapper::PointerWrapper;
         
+        /** \fn Group()
+         *  \brief Default constructor.
+         */
+        Group();
+
         /** \fn void set_default()
          *  \brief Sets group as default group for new objects.
          */

@@ -10,6 +10,10 @@
 
 namespace lvgl::core {
 
+    Group::Group() {
+        this->lv_obj = LvPointerType(lv_group_create());
+    }
+
     void Group::set_default() {
         lv_group_set_default(this->raw_ptr());
     }
